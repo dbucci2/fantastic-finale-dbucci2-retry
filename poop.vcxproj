@@ -227,6 +227,9 @@
   <ItemGroup>
     <Text Include="..\..\CLionProjects\untitled1\startingPositions.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DEVELOPMENT.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>

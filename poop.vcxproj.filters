@@ -113,4 +113,9 @@
       <Filter>src</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DEVELOPMENT.md">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
 </Project>
