@@ -20,7 +20,7 @@ public:
 	int getY();
 
 	friend std::vector<Point> assignPieceCoords();
-	friend std::vector<Point*> movePiece(std::vector<Point> input, int index);
+	friend Point movePiece(std::vector<std::vector<Point>> boardMap, Point toUse, int x, int y);
 
 	friend std::vector<std::vector<Point>> buildBoardMap();
 	

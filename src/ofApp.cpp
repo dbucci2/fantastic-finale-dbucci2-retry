@@ -91,18 +91,20 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if ((x < HORIZ_MIN || x > HORIZ_MAX) || (y < VERT_MIN || y > VERT_MAX)) {
 		return;
 	}
-	std::cout << x << ", " << y << std::endl;
 
 	if (!clicked) {
 
 		clickedIndex = findPiece(x, y, pieceCoords, boardMap);
+		if (clickedIndex == -1) {
+			return;
+		}
 		clicked = true;
+		std::cout << clickedIndex << std::endl;
 		return;
 
 	}
 	
-	
-
+	pieceCoords[clickedIndex] = movePiece(boardMap, pieceCoords[clickedIndex], x, y);
 	clicked = false;
 	
 }

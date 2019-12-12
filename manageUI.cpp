@@ -56,7 +56,7 @@ std::vector<Point> assignPieceCoords() {
 	
 	std::vector<Point> pieceCoords;
 
-	// White piece pointers
+	// White piece points
 
 	Point a = Point(1201, 1405);
 	pieceCoords.push_back(a);
@@ -95,7 +95,7 @@ std::vector<Point> assignPieceCoords() {
 	Point p = Point(1658, 1255);
 	pieceCoords.push_back(p);
 
-	// Black piece pointers
+	// Black piece points
 
 	Point q = Point(1201, 348);
 	pieceCoords.push_back(q);
@@ -138,9 +138,71 @@ std::vector<Point> assignPieceCoords() {
 
 }
 
-std::vector<Point*> movePiece(std::vector<Point> input, int index) {
-	std::vector<Point*> vector;
-	return vector;
+Point movePiece(std::vector<std::vector<Point>> boardMap, Point toUse, int x, int y) {
+
+	int savedX = 0;
+	int savedY = 0;
+
+	for (std::vector<Point> vector : boardMap) {
+		if (savedX != 0 && savedY != 0) {
+			break;
+		}
+		for (Point point : vector) {
+			if (point.getY() > y && savedY == 0) {
+				savedY = point.getY() - Y_MOVE_CONST;
+			}
+			if (point.getX() > x && savedX == 0) {
+				savedX = point.getX() - X_MOVE_CONST;
+			}
+		}
+	}
+
+	bool xIsGreater = false;
+	bool yIsGreater = false;
+
+	if (toUse.getX() > savedX) {
+		xIsGreater = true;
+	}
+	if (toUse.getY() > savedY) {
+		yIsGreater = true;
+	}
+
+	// Adjust X first
+
+	if (xIsGreater) {
+		while (toUse.getX() > savedX) {
+			if (toUse.getX() > savedX) {
+				toUse.x -= X_MOVE_CONST;
+			}
+		}
+		toUse.x += X_MOVE_CONST;
+	} else {
+		while (toUse.getX() < savedX) {
+			if (toUse.getX() < savedX) {
+				toUse.x += X_MOVE_CONST;
+			}
+		}
+	}
+
+	if (yIsGreater) {
+		while (toUse.getY() > savedY) {
+			if (toUse.getY() > savedY) {
+				toUse.y -= Y_MOVE_CONST;
+			}
+		}
+		toUse.y += Y_MOVE_CONST;
+	} else {
+		while (toUse.getY() < savedY) {
+			if (toUse.getY() < savedY) {
+				toUse.y += Y_MOVE_CONST;
+			}
+		}
+	}
+
+	std::cout << x << ", " << y << "; " << savedX << ", " << savedY << "; " << toUse.x << ", " << toUse.y << std::endl;
+	
+	return toUse;
+	
 }
 
 
@@ -149,7 +211,7 @@ std::vector<std::vector<Point>> buildBoardMap() {
 	for (int i = 0; i < BOARD_LENGTH + 1; i++) {
 		std::vector<Point> points;
 		for (int j = 0; j < BOARD_LENGTH + 1; j++) {
-			points.push_back(Point(X_START + (X_MOVE_CONST * i), Y_START + (Y_MOVE_CONST * j)));
+			points.push_back(Point(X_START + (X_MOVE_CONST * j), Y_START + (Y_MOVE_CONST * i)));
 		}
 		vector.push_back(points);
 	}
@@ -162,34 +224,31 @@ int findPiece(int x, int y, std::vector<Point> pieceCoords, std::vector<std::vec
 	int savedY = 0;
 
 	for (std::vector<Point> vector : boardMap) {
-		for (Point point : vector) {
-			int pointY = point.getY();
-			int pointX = point.getX();
-			if (point.getY() > y || savedY != 0) {
-				savedY = y - Y_MOVE_CONST;
-				break;
-			}
-			else if (point.getX() > x || savedX != 0) {
-				savedX = x - X_MOVE_CONST;
-				continue;
-			}
-		}
 		if (savedX != 0 && savedY != 0) {
 			break;
 		}
+		for (Point point : vector) {
+			if (point.getY() > y && savedY == 0) {
+				savedY = point.getY() - Y_MOVE_CONST;
+			}
+			if (point.getX() > x && savedX == 0) {
+				savedX = point.getX() - X_MOVE_CONST;
+			}
+		}
 	}
 
-	int savedIndex = 0;
-	int savedDistance = 10000000;
+	int savedIndex = -1;
+	int savedDistance = HALF_SQUARE_DIST;
+	int count = 0;
 	for (Point point : pieceCoords) {
-		int count = 0;
-		int dist = hypot(savedX - point.getX(), savedY - point.getY());
+		int dist = sqrt(((savedY - point.getY()) * (savedY - point.getY())) + ((savedX - point.getX()) * (savedX - point.getX())));
 		if (dist < savedDistance) {
 			savedDistance = dist;
 			savedIndex = count;
 		}
 		count++;
 	}
+	
 
 	return savedIndex;
 }

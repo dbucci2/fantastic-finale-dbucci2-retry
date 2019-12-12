@@ -11,7 +11,7 @@ class ofApp : public ofBaseApp {
 public:
 
 	bool clicked  = false;
-	int clickedIndex;
+	int clickedIndex = -1;
 
 	void setup();
 	void update();
