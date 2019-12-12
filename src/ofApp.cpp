@@ -104,6 +104,10 @@ void ofApp::mousePressed(int x, int y, int button) {
 
 	}
 	
+	int pieceToKill = findPiece(x, y, pieceCoords, boardMap);
+	if (pieceToKill != -1) {
+		pieceCoords[pieceToKill] = Point(NICK_PIECE, NICK_PIECE);
+	}
 	pieceCoords[clickedIndex] = movePiece(boardMap, pieceCoords[clickedIndex], x, y);
 	clicked = false;
 	
