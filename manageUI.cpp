@@ -272,3 +272,12 @@ Point captured(Point currentCoords) {
 
 }
 
+bool canKill(int index, int killIndex) {
+	if (index <= MAX_WHITE_INDEX && killIndex <= MAX_WHITE_INDEX) {
+		return false;
+	}
+	else if (index > MAX_WHITE_INDEX&& killIndex > MAX_WHITE_INDEX) {
+		return false;
+	}
+	return true;
+}

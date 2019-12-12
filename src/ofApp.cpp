@@ -104,11 +104,21 @@ void ofApp::mousePressed(int x, int y, int button) {
 
 	}
 	
+	Point spaceToMoveTo = movePiece(boardMap, pieceCoords[clickedIndex], x, y);
+	if (pieceCoords[clickedIndex].getX() == spaceToMoveTo.getX() && pieceCoords[clickedIndex].getY() == spaceToMoveTo.getY()) {
+		return;
+	}
+
 	int pieceToKill = findPiece(x, y, pieceCoords, boardMap);
-	if (pieceToKill != -1 && pieceToKill != clickedIndex) {
+	if (pieceToKill != -1 && pieceToKill != clickedIndex && canKill(clickedIndex, pieceToKill)) {
 		pieceCoords[pieceToKill] = captured(pieceCoords[pieceToKill]);
 	}
-	pieceCoords[clickedIndex] = movePiece(boardMap, pieceCoords[clickedIndex], x, y);
+
+	if (pieceToKill != -1 && !canKill(clickedIndex, pieceToKill)) {
+		return;
+	}
+
+	pieceCoords[clickedIndex] = spaceToMoveTo;
 	isWhiteTurn = !isWhiteTurn;
 	clicked = false;
 	

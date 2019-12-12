@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "manageUI.h"
-#include "chess.h"
 #include "ofxImgButton.h"
 #include "includes.h"
 
