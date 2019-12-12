@@ -198,8 +198,6 @@ Point movePiece(std::vector<std::vector<Point>> boardMap, Point toUse, int x, in
 			}
 		}
 	}
-
-	std::cout << x << ", " << y << "; " << savedX << ", " << savedY << "; " << toUse.x << ", " << toUse.y << std::endl;
 	
 	return toUse;
 	
@@ -251,4 +249,25 @@ int findPiece(int x, int y, std::vector<Point> pieceCoords, std::vector<std::vec
 	
 
 	return savedIndex;
+}
+
+/**
+* Random number generator from https://bytefreaks.net/programming-2/cc-get-a-random-number-that-is-in-a-specific-range 
+*/
+Point captured(Point currentCoords) {
+	
+	// Find a new X
+
+	int maxNickNumber = 2500;
+	int minNickNumber = 1500;
+	int newX = (rand() % (maxNickNumber + 1 - minNickNumber)) + minNickNumber;
+
+	// Find a new Y 
+
+	maxNickNumber = -150;
+	minNickNumber = 150;
+	int newY = (rand() % (maxNickNumber + 1 - minNickNumber)) + minNickNumber;
+
+	return Point(currentCoords.x + newX, currentCoords.y + newY);
+
 }

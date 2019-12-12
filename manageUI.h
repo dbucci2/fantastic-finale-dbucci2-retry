@@ -23,7 +23,7 @@ public:
 	friend Point movePiece(std::vector<std::vector<Point>> boardMap, Point toUse, int x, int y);
 
 	friend std::vector<std::vector<Point>> buildBoardMap();
-	
+	friend Point captured(Point currentCoords);
 	friend bool moveTo(int x, int y);
 
 };
