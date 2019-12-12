@@ -271,3 +271,4 @@ Point captured(Point currentCoords) {
 	return Point(currentCoords.x + newX, currentCoords.y + newY);
 
 }
+

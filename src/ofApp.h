@@ -12,6 +12,7 @@ public:
 
 	bool clicked  = false;
 	int clickedIndex = -1;
+	bool isWhiteTurn = true;
 
 	void setup();
 	void update();
@@ -32,7 +33,7 @@ public:
 	void loadBoardAndRoyals();
 	void loadPawns();
 	void loadSidekicks();
-
+	bool isCorrectColor(int index);
 
 	std::vector<Point> pieceCoords;
 	std::vector<std::vector<Point>> boardMap;

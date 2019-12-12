@@ -37,12 +37,6 @@
     <ClCompile Include="manageUI.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="chess.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="user_interface.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -95,13 +89,7 @@
     <ClInclude Include="manageUI.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="chess.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="includes.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="user_interface.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

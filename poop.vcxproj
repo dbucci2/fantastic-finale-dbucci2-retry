@@ -183,7 +183,6 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="chess.cpp" />
     <ClCompile Include="manageUI.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
@@ -194,10 +193,8 @@
     <ClCompile Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxTextInputField.cpp" />
     <ClCompile Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxUIButton.cpp" />
     <ClCompile Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxUISlider.cpp" />
-    <ClCompile Include="user_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chess.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="manageUI.h" />
     <ClInclude Include="src\ofApp.h" />
@@ -210,7 +207,6 @@
     <ClInclude Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxUIFontRenderer.h" />
     <ClInclude Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxUISlider.h" />
     <ClInclude Include="..\..\Downloads\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUIUtils-master\src\ofxUIUtils.h" />
-    <ClInclude Include="user_interface.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

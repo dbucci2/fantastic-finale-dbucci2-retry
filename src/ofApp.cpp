@@ -15,8 +15,6 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-
-
 }
 
 //--------------------------------------------------------------
@@ -98,8 +96,10 @@ void ofApp::mousePressed(int x, int y, int button) {
 		if (clickedIndex == -1) {
 			return;
 		}
+		if (!isCorrectColor(clickedIndex)) {
+			return;
+		}
 		clicked = true;
-		std::cout << clickedIndex << std::endl;
 		return;
 
 	}
@@ -109,6 +109,7 @@ void ofApp::mousePressed(int x, int y, int button) {
 		pieceCoords[pieceToKill] = captured(pieceCoords[pieceToKill]);
 	}
 	pieceCoords[clickedIndex] = movePiece(boardMap, pieceCoords[clickedIndex], x, y);
+	isWhiteTurn = !isWhiteTurn;
 	clicked = false;
 	
 }
@@ -232,3 +233,17 @@ void ofApp::loadPawns() {
 	
 }
 
+bool ofApp::isCorrectColor(int index) {
+	if (isWhiteTurn) {
+		if (index <= MAX_WHITE_INDEX) {
+			return true;
+		}
+		return false;
+	}
+	else {
+		if (index > MAX_WHITE_INDEX) {
+			return true;
+		}
+		return false;
+	}
+}

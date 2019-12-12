@@ -65,3 +65,5 @@ static const int NUM_PAWNS = 8;
 static const int BOARD_LENGTH = 8;
 static const int HALF_SQUARE_DIST = 106;
 static const int NICK_PIECE = 10000;
+
+static const int MAX_WHITE_INDEX = 15;

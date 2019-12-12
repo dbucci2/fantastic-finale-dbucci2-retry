@@ -30,4 +30,3 @@ public:
 
 int findPiece(int x, int y, std::vector<Point> pieceCoords, std::vector<std::vector<Point>> boardMap);
 
-
